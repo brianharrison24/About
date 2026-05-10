@@ -1,0 +1,145 @@
+/* GLOBAL SETTINGS */
+html { scroll-behavior: smooth; }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+body { background: #000; color: #fff; overflow-x: hidden; }
+.yellow { color: #FFD700; }
+.highlight { color: #FFD700; font-weight: bold; }
+
+/* HERO SECTION */
+.hero { height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; }
+.hero-content { width: 80%; max-width: 1100px; }
+.hero-content h1 { font-size: clamp(45px, 8vw, 90px); font-weight: 900; text-shadow: 0 0 20px rgba(255,255,255,0.4); line-height: 1.1; letter-spacing: -2px; }
+.name-top { text-align: left; width: 100%; display: block; }
+.name-bottom { text-align: right; width: 100%; display: block; }
+
+/* SCROLL INDICATOR */
+.scroll-indicator { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); font-size: 20px; color: #fff; animation: bounce 2s infinite; cursor: pointer; text-decoration: none; }
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+    40% { transform: translateX(-50%) translateY(-10px); }
+    60% { transform: translateX(-50%) translateY(-5px); }
+}
+
+/* ABOUT & STORY SECTIONS */
+.about, .story { padding: 100px 20px; }
+.about-container, .story-container { max-width: 1100px; margin: 0 auto; }
+.about-container { display: flex; align-items: center; gap: 80px; }
+.about-img { flex: 1; display: flex; justify-content: center; }
+.about-image img { width: 100%; max-width: 700px; height: auto; object-fit: contain; border-radius: 40px; box-shadow: 0 10px 30px rgba(255,255,255,0.5); }
+.yellow-line { width: 50px; height: 4px; background: #FFD700; margin-bottom: 20px; }
+.about-text h2, .story-title { font-size: 3rem; font-weight: 900; margin-bottom: 20px; }
+
+/* STORY CONTENT */
+.story { text-align: center; background: #080808; }
+.story-subtitle { letter-spacing: 5px; color: #555; margin-bottom: 10px; font-weight: bold; }
+.story-content { max-width: 900px; margin: 0 auto; text-align: justify; text-justify: inter-word; line-height: 1.8; letter-spacing: 0.5px; color: #ccc; font-size: 1rem; }
+.story-content p { margin-bottom: 25px; }
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+    .story-content { text-align: center; }
+}
+
+/* CONTACT SECTION */
+.contact { padding: 100px 20px; text-align: center; background: #000; }
+.contact-title { font-size: clamp(3rem, 8vw, 4.5rem); font-weight: 900; margin-bottom: 60px; letter-spacing: -1px; }
+.contact-form { max-width: 850px; margin: 0 auto; text-align: left; }
+.input-group { margin-bottom: 30px; }
+.input-group label { display: block; font-size: 0.75rem; font-weight: 800; margin-bottom: 12px; color: #fff; letter-spacing: 1.5px; padding-left: 10px; }
+.input-group input, .input-group textarea { width: 100%; background: #0D0D0D; border: none; border-radius: 40px; padding: 22px 30px; color: #fff; font-size: 1rem; outline: none; transition: background 0.3s ease; }
+.input-group textarea { border-radius: 25px; resize: none; }
+.input-group input:focus, .input-group textarea:focus { background: #151515; }
+
+/* RECAPTCHA & SEND BUTTON */
+.captcha-container { background: transparent; border: none; display: flex; justify-content: flex-start; align-items: center; width: 100%; margin-bottom: 40px; padding: 0; }
+.captcha-box { background: #0D0D0D; border: 1px solid #333; width: fit-content; padding: 15px 20px; border-radius: 5px; display: flex; align-items: center; gap: 40px; cursor: pointer; }
+.captcha-interactive { display: flex; align-items: center; gap: 15px; }
+#robotCheck { display: none; }
+.status-box { width: 26px; height: 26px; background: #fff; border: 2px solid #c1c1c1; border-radius: 3px; display: flex; justify-content: center; align-items: center; position: relative; transition: all 0.2s ease; }
+.captcha-interactive label { font-size: 0.95rem; color: #fff; cursor: pointer; user-select: none; margin: 0; }
+.recaptcha-logo { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.recaptcha-logo img { height: 30px; width: auto; }
+.recaptcha-logo p { font-size: 0.6rem; color: #888; margin: 5px 0 0; line-height: 1; }
+
+/* SEND BUTTON */
+.send-btn { display: block; width: 100%; max-width: 250px; margin: 40px 0 0; padding: 18px; background: transparent; border: 2px solid #fff; color: #fff; border-radius: 50px; font-weight: 800; font-size: 0.9rem; letter-spacing: 2px; cursor: pointer; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); text-decoration: none; }
+.send-btn:hover { background: #fff; color: #000; transform: scale(1.05); }
+
+/* CAPTCHA STATES & ANIMATIONS */
+.status-box.loading::after { content: ""; width: 15px; height: 15px; border: 2px solid #4A90E2; border-top-color: transparent; border-radius: 50%; animation: spinCaptcha 0.6s linear infinite; }
+@keyframes spinCaptcha { to { transform: rotate(360deg); } }
+.status-box.checked { border-color: transparent; background: transparent; }
+.status-box.checked::after { content: ""; width: 16px; height: 9px; border-left: 3px solid #00C800; border-bottom: 3px solid #00C800; transform: rotate(-45deg) translate(2px, -3px); display: block; }us-box.checked::after { content: ""; width: 16px; height: 9px; border-left: 3px solid #00C800; border-bottom: 3px solid #00C800; transform: rotate(-45deg) translate(2px, -3px); display: block; }
+
+/* SEND BUTTON */
+.send-btn { width: 100%; max-width: 250px; display: block; margin: 40px auto 0; background: transparent; border: 2px solid #fff; color: #fff; padding: 18px; border-radius: 50px; font-weight: 800; font-size: 0.9rem; cursor: pointer; letter-spacing: 2px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.send-btn:hover { background: #fff; color: #000; transform: scale(1.05); }
+
+/* FOOTER SECTION */
+.main-footer { background-color: #000; padding: 60px 10%; border-top: 1px solid #1a1a1a; }
+.footer-grid { display: flex; justify-content: space-between; align-items: flex-start; }
+.footer-col h3 { color: #888; font-size: 0.7rem; font-weight: 800; letter-spacing: 2px; margin-bottom: 20px; text-transform: uppercase; }
+.footer-col p { color: #fff; font-size: 0.85rem; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+.yellow { color: #FFD700; font-size: 0.9rem; }
+.copyright-col { text-align: right; }
+.copyright-col h2 { color: #fff; font-size: 1.8rem; font-weight: 900; margin: 0; line-height: 1; }
+.copyright-col p { color: #444; font-size: 0.75rem; margin-top: 5px; display: block; }
+
+/* FOOTER RESPONSIVENESS */
+@media (max-width: 768px) {
+    .footer-grid { flex-direction: column; gap: 40px; text-align: center; }
+    .footer-col p { justify-content: center; }
+    .copyright-col { text-align: center; }
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) { 
+    .about-container { gap: 40px; padding: 0 40px; } 
+    .hero-content { width: 95%; } 
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 { font-size: 40px; line-height: 1.2; letter-spacing: -1px; }
+    .name-top, .name-bottom { text-align: center; display: block; width: 100%; }
+    .about { padding: 60px 20px; }
+    .about-container { flex-direction: column; text-align: left; gap: 30px; align-items: flex-start; } /* Fixed alignment */
+    .about-image img { max-width: 90%; border-radius: 30px; }
+    .about-text { padding: 0 10px; }
+    .about-text h2 { margin-bottom: 15px; }
+    .contact-title { margin-bottom: 30px; }
+    .footer-grid { flex-direction: column; gap: 40px; text-align: left; align-items: flex-start; } /* Fix for text overflow */
+    .footer-col { width: 100%; }
+    .footer-col p { font-size: 0.8rem; word-break: break-word; } /* Prevents long text bleed */
+    .copyright-col { text-align: left; margin-top: 20px; }
+}
+
+@media (max-width: 400px) {
+    .hero-content h1 { font-size: 40px; }
+    .about-text h2 { font-size: 2rem; }
+    .send-btn { padding: 12px; font-size: 0.9rem; }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero { height: auto; padding: 100px 20px; }
+    .scroll-indicator { display: none; }
+}
+
+/* ANIMATIONS & REVEAL EFFECTS */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+/* STORY SECTION REVEAL */
+.story .reveal { transition: opacity 1.8s cubic-bezier(0.17, 0.55, 0.55, 1), transform 1.8s cubic-bezier(0.17, 0.55, 0.55, 1); }
+.story-content p.reveal:nth-child(1) { transition-delay: 0.2s; }
+.story-content p.reveal:nth-child(2) { transition-delay: 0.5s; }
+.story-content p.reveal:nth-child(3) { transition-delay: 0.8s; }
+.about-text.reveal { transition-delay: 0.3s; }
+
+/* NAME SLIDE-IN (HERO SECTION) */
+.name-top, .name-bottom { opacity: 0; filter: blur(10px); animation: slideInName 1s ease-out forwards; }
+.name-top { transform: translateX(-100px); }
+.name-bottom { transform: translateX(100px); animation-delay: 0.3s; }
+
+@keyframes slideInName {
+    to { opacity: 1; filter: blur(0); transform: translateX(0); }
+}

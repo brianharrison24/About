@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brian Harrison | Official</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+    <section class="hero reveal">
+        <div class="hero-content">
+            <h1 class="name-top">BRIAN</h1>
+            <h1 class="name-bottom">HARRISON</h1>
+        </div>
+    </section>
+
+        <!-- Animated Down Arrow -->
+       <a href="#about" class="scroll-indicator">
+            <i class="fas fa-arrow-down"></i>
+        </a>
+
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about">
+        <div class="about-container">
+            <div class="about-image reveal">
+                <img src="assets/profile.jpg" alt="Profile">
+            </div>
+            
+            <div class="about-text reveal">
+                <div class="yellow-line"></div>
+                <h2>ABOUT.</h2>
+                <p>Brian Harrison is a <span class="highlight">Digital Creator and Visionary</span> 
+                   focused on <span class="highlight">building</span> a legacy through 
+                   <span class="highlight">passionate and artistic</span> expression. 
+                   By merging <span class="highlight">lifestyle</span> with pure 
+                   <span class="highlight">creativity</span>, he crafts visuals that redefine the modern digital space.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- STORY SECTION -->
+    <section id="story" class="story reveal">
+        <div class="story-container">
+            <p class="story-subtitle">BRIAN'S</p>
+            <h2 class="story-title">STORY.</h2>
+            
+            <div class="story-content">
+                <p class="reveal">
+                    At 21, my journey is defined by more than just success. It is built on the 
+                    <span class="highlight">resilience</span> found in struggles and the 
+                    <span class="highlight">clarity</span> found in pain. I have walked through 
+                    moments of being lost and tested, yet I remain never defeated. I realized 
+                    that life is about surviving the hard times and learning from every mistake.
+                </p>
+                
+                <p class="reveal">
+                    I believe every hardship is a <span class="highlight">blueprint for growth</span>. 
+                    Behind every quiet moment is a person trying his best to improve, heal, and 
+                    build a better version of himself. Today, I am not just chasing dreams. 
+                    I am <span class="highlight">architecting a future</span> mentally and 
+                    physically that my younger self would be proud of.
+                </p>
+            
+                <p class="reveal">
+                    This is only the beginning. I am building my future step by step, 
+                    disciplined and consistent, even when the results are not yet visible. 
+                    I want my story to be proof that an ordinary person can create 
+                    something <span class="highlight">meaningful</span>. My story is far from over.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <h2 class="contact-title reveal">CONTACT.</h2>
+            
+            <form class="contact-form" onsubmit="event.preventDefault();">
+                <div class="input-group reveal">
+                    <label>NAME</label>
+                    <input type="text">
+                </div>
+    
+                <div class="input-group reveal">
+                    <label>COMPANY</label>
+                    <input type="text">
+                </div>
+    
+                <div class="input-group reveal">
+                    <label>EMAIL</label>
+                    <input type="email">
+                </div>
+    
+                <div class="input-group reveal">
+                    <label>MESSAGE</label>
+                    <textarea rows="5"></textarea>
+                </div>
+    
+                <div class="captcha-container reveal">
+                    <div class="captcha-box" id="captchaBox">
+                        <div class="captcha-interactive">
+                            <input type="checkbox" id="robotCheck">
+                            <div class="status-box"></div> <label for="robotCheck">I'm not a robot</label>
+                        </div>
+                        <div class="recaptcha-logo">
+                            <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA">
+                            <p>reCAPTCHA</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <button type="submit" class="send-btn reveal">SEND</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>CONTACT</h3>
+                <p><i class="fas fa-map-marker-alt yellow"></i> Tagoloan, Misamis Oriental, Philippines</p>
+                <p><i class="fas fa-envelope yellow"></i> bryanligason1@gmail.com</p>
+            </div>
+    
+            <div class="footer-col">
+                <h3>SOCIAL NETWORKS</h3>
+                <p><i class="fab fa-facebook yellow"></i> Brian Harrison on Facebook</p>
+                <p><i class="fab fa-instagram yellow"></i> _brianharrison on Instagram</p>
+            </div>
+    
+            <div class="footer-col copyright-col">
+                <h2>Brian Harrison</h2>
+                <p>© Copyright 2026</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const initScrollReveal = () => {
+            const observerOptions = {
+                root: null,
+                threshold: 0.15, 
+                rootMargin: "0px 0px -50px 0px" 
+            };
+    
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+    
+            const revealElements = document.querySelectorAll('.reveal');
+            revealElements.forEach((el) => observer.observe(el));
+        };
+    
+        document.addEventListener('DOMContentLoaded', initScrollReveal);
+        document.addEventListener('DOMContentLoaded', () => {
+            const captchaBox = document.getElementById('captchaBox');
+            const statusBox = document.querySelector('.status-box');
+            const realCheck = document.getElementById('robotCheck');
+        
+            if (captchaBox) {
+                captchaBox.addEventListener('click', () => {
+                    if (statusBox.classList.contains('loading') || statusBox.classList.contains('checked')) return;
+    
+                    statusBox.classList.add('loading');
+        
+                    setTimeout(() => {
+                        statusBox.classList.remove('loading');
+                        statusBox.classList.add('checked'); 
+                        if (realCheck) realCheck.checked = true;
+                    }, 1500);const sendBtn = document.querySelector('.send-btn');
+                    const contactForm = document.querySelector('.contact-form');
+                    
+                    if (contactForm) {
+                        contactForm.addEventListener('submit', (e) => {
+                            e.preventDefault(); 
+                            sendBtn.innerText = "MESSAGE SENT";
+                            sendBtn.style.background = "white";
+                            sendBtn.style.color = "black";
+                                                   
+                            setTimeout(() => {
+                                sendBtn.innerText = "SEND";
+                                sendBtn.style.background = "transparent";
+                                sendBtn.style.color = "white";
+                            }, 3000);
+                        });
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
