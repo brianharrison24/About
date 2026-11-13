@@ -109,7 +109,7 @@ body { background: #000; color: #fff; overflow-x: hidden; }
     .contact-title { margin-bottom: 30px; }
     .footer-grid { flex-direction: column; gap: 40px; text-align: left; align-items: flex-start; } /* Fix for text overflow */
     .footer-col { width: 100%; }
-    .footer-col p { font-size: 0.8rem; word-break: break-word; } /* Prevents long text bleed */
+    .footer-col p { font-size: 0.8rem; word-break: break-word; } 
     .copyright-col { text-align: left; margin-top: 20px; }
 }
 
